@@ -6,12 +6,12 @@ import Shimmer from './Shimmer';
 const Body = () => {
 
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
-     const [searchText, setSearchText] = useState("");
-     const [filteredRest, setFilteredRest] = useState([]);
+    const [searchText, setSearchText] = useState("");
+    const [filteredRest, setFilteredRest] = useState([]);
 
 
     const handleClickTopRated = () =>{
-      return setFilteredRest(listOfRestaurants.filter((res) => res.data.avgRating>4.3));  
+      return setListOfRestaurants(listOfRestaurants.filter((res) => res.data.avgRating>4.4));  
     }
 
     useEffect(()=>{
@@ -23,7 +23,7 @@ const Body = () => {
         const json = await data.json();
        // console.log(json);
         setListOfRestaurants(json?.data?.cards[0]?.data?.data?.cards); //optional chaining
-         setFilteredRest(json?.data?.cards[0]?.data?.data?.cards);
+        setFilteredRest(json?.data?.cards[0]?.data?.data?.cards);
     }
 
     // if(listOfRestaurants.length === 0)
@@ -33,8 +33,7 @@ const Body = () => {
     listOfRestaurants.length===0 ? <Shimmer/> : (
     <div className='body'>
         <div className='filter'>
-
-        <div className='search'>
+            <div className='search'>
                 <input type= "text" className='search-box' value={searchText} onChange={(e) =>setSearchText(e.target.value)}/>
                     <button onClick={()=> {
                         console.log(searchText);
@@ -45,7 +44,6 @@ const Body = () => {
                         setFilteredRest(filterList);
                     }}>Search</button>
             </div>
-  
          <button className='btn-filter' onClick={handleClickTopRated}>Top Rated Restaurants</button>
         </div>
 
