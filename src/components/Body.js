@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import RestaurantCard from './RestaurantCard';
+import useOnlineStatus from '../utils/useOnlineStatus';
 
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
@@ -9,7 +10,6 @@ const Body = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
      const [searchText, setSearchText] = useState("");
      const [filteredRest, setFilteredRest] = useState([]);
-
 
     const handleClickTopRated = () =>{
       return setFilteredRest(listOfRestaurants.filter((res) => res.data.avgRating>4.3));  
@@ -29,6 +29,9 @@ const Body = () => {
 
     // if(listOfRestaurants.length === 0)
     //     return <Shimmer />
+    const onlineStatus= useOnlineStatus();
+
+    if (onlineStatus === false) return <h1>Looks you are offline. Kindly check your internet connection</h1>;
     
   return (
     listOfRestaurants.length===0 ? <Shimmer/> : (
