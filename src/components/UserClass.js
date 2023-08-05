@@ -20,7 +20,7 @@ class UserClass extends React.Component {
       console.log(this.props.name +"Child Component Did Mount");
       const data = await fetch("https://api.github.com/users/anura-dev");
       const json = await data.json();
-      console.log(json);
+      //console.log(json);
 
       this.setState({
         userInfo:json
@@ -28,15 +28,15 @@ class UserClass extends React.Component {
       }
 
     componentDidUpdate(){
-        console.log("Component Did Update");
+       // console.log("Component Did Update");
     }
 
     componentWillUnmount(){
-        console.log("Component Will Unmount");
+       // console.log("Component Will Unmount");
     }
 
     render(){
-       console.log(this.props.name +"Child Render");
+       //console.log(this.props.name +"Child Render");
       const {login, avatar_url} = this.state.userInfo;
         return (
             <div className="user-card">
