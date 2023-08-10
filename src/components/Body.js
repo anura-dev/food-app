@@ -15,7 +15,7 @@ const Body = () => {
      const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
      const {loggedInUser, setUserName} = useContext(UserContext);
 
-     console.log(listOfRestaurants, "listofRest");
+    //  console.log(listOfRestaurants, "listofRest");
 
     const handleClickTopRated = () =>{
       return setFilteredRest(listOfRestaurants.filter((res) => res.info.avgRating>4));  
@@ -32,7 +32,7 @@ const Body = () => {
         //setListOfRestaurants(json?.data?.cards[5]?.data?.data?.cards); //optional chaining
         setListOfRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants); //optional chaining
          setFilteredRest(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-         console.log(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants, "fdsgfdgfd")
+        //  console.log(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants, "fdsgfdgfd")
     }
 
     // if(listOfRestaurants.length === 0)

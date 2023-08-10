@@ -1,8 +1,18 @@
 import React from 'react';
 import { RESCARD_URL } from '../utils/constants';
+import { useDispatch } from 'react-redux';
+import {addItem} from "../utils/cartSlice";
 
 const ItemList = ({items}) => {
     // console.log(items,"items");
+
+    const dispatch = useDispatch();
+
+    const handleAddItem =(item) =>{
+        //Dispatch an item
+        dispatch(addItem(item));
+    }
+
   return (
     <div>
         <div>
@@ -19,7 +29,8 @@ const ItemList = ({items}) => {
 
                         <div className='w-3/12 p-4'> 
                             <div className='absolute'>
-                                <button className='p-2 mx-16 rounded-lg bg-black text-white shadow-lg m-auto' > Add +</button>
+                                <button className='p-2 mx-16 rounded-lg bg-black text-white shadow-lg m-auto' 
+                                    onClick={()=> handleAddItem(item)} > Add +</button>
                             </div>
                             <img src={RESCARD_URL + item.card.info.imageId} className='w-full' /> 
                         </div>
