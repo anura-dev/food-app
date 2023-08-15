@@ -18,7 +18,7 @@ const Body = () => {
     //  console.log(listOfRestaurants, "listofRest");
 
     const handleClickTopRated = () =>{
-      return setFilteredRest(listOfRestaurants.filter((res) => res.info.avgRating>4));  
+      setFilteredRest(listOfRestaurants.filter((res) => res.info.avgRating>4));  
     }
 
     useEffect(()=>{
@@ -30,8 +30,8 @@ const Body = () => {
         const json = await data.json();
        // console.log(json);
         //setListOfRestaurants(json?.data?.cards[5]?.data?.data?.cards); //optional chaining
-        setListOfRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants); //optional chaining
-         setFilteredRest(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setListOfRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants); //optional chaining
+         setFilteredRest(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         //  console.log(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants, "fdsgfdgfd")
     }
 
@@ -47,14 +47,13 @@ const Body = () => {
         <div className='filter flex'>
 
         <div className='search m-4 p-4'>
-                <input type= "text" className='border border-solid border-black' value={searchText} onChange={(e) =>setSearchText(e.target.value)}/>
-                    <button className='px-4 py-1 m-3 bg-green-100 rounded-lg'
+                <input data-testid ="searchInput" type= "text" className='border border-solid border-black' value={searchText} onChange={(e) =>setSearchText(e.target.value)}/>
+
+                <button className='px-4 py-1 m-3 bg-green-100 rounded-lg'
                      onClick={()=> {
-                        console.log(searchText);
-                        const filterList= listOfRestaurants.filter((res) => {
-                            res.info.name.toLowerCase().includes(searchText.toLowerCase());
-                        })
-                        
+                       // console.log(searchText,"searchtext");
+                
+                        const filterList= listOfRestaurants.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                         setFilteredRest(filterList);
                     }}>Search</button>
             </div>

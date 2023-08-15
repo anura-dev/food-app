@@ -18,7 +18,7 @@ const RestaurantCard = (props) => {
    const {loggedInUser} = useContext(UserContext);
 
     return (
-        <div className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200 shadow-lg">
+        <div data-testid = "resCard" className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200 shadow-lg">
         <img className="rounded-lg" alt= "res-logo" src={RESCARD_URL + cloudinaryImageId} />
             <h3 className="font-bold py-4 text-lg">{name}</h3>
             <h4>{cuisines.join(", ")}</h4>
