@@ -10,6 +10,8 @@ const RestaurantMenu = () => {
     const resInfo = useRestaurantMenu(resId);   //Custom Hook
 
     const [showIndex, setShowIndex] = useState(); 
+    // if showIndex=0 -> Ist accordian expand, all other collapse
+    // if showIndex=1 -> 2nd accordian expand, all other collapse
 
 
 if( resInfo===null) return <Shimmer/> ;
@@ -33,7 +35,7 @@ if( resInfo===null) return <Shimmer/> ;
           {/** categories */}
 
           {categories.map((category, index) => (
-            //Controlled component as showItems is controlling RestaurantCategory comp
+            //Controlled component as showItems state is controlling RestaurantCategory comp
             //THis is lifting the state up to control the child comp
             <RestaurantCategory 
               key={category?.card?.card?.title} 
